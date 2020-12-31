@@ -1,0 +1,68 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run --machine --target lib/main.dart -d chrome --dart-define=flutter.inspector.structuredErrors=true --start-paused --web-server-debug-protocol ws --web-server-debug-backend-protocol ws --web-allow-expose-url
+
+## exception
+
+StateError: Bad state: No element
+
+```
+#0      Stream.first.<anonymous closure> (dart:async/stream.dart:1296:9)
+#1      _rootRun (dart:async/zone.dart:1182:47)
+#2      _CustomZone.run (dart:async/zone.dart:1093:19)
+#3      _CustomZone.runGuarded (dart:async/zone.dart:997:7)
+#4      _DoneStreamSubscription._sendDone (dart:async/stream_impl.dart:811:36)
+#5      _rootRun (dart:async/zone.dart:1190:13)
+#6      _CustomZone.run (dart:async/zone.dart:1093:19)
+#7      _CustomZone.runGuarded (dart:async/zone.dart:997:7)
+#8      _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:1037:23)
+#9      _microtaskLoop (dart:async/schedule_microtask.dart:41:21)
+#10     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50:5)
+#11     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:120:13)
+#12     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:185:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel beta, 1.24.0-10.2.pre, on macOS 11.1 20C69 darwin-x64, locale en-IN)
+    • Flutter version 1.24.0-10.2.pre at /Users/girish/flutter
+    • Framework revision 022b333a08 (6 weeks ago), 2020-11-18 11:35:09 -0800
+    • Engine revision 07c1eed46b
+    • Dart version 2.12.0 (build 2.12.0-29.10.beta)
+
+[!] Android toolchain - develop for Android devices (Android SDK version 29.0.3)
+    • Android SDK at /Users/girish/Library/Android/sdk
+    • Platform android-29, build-tools 29.0.3
+    • Java binary at: /Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/bin/java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_242-release-1644-b3-6222593)
+    ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses
+
+[✓] Xcode - develop for iOS and macOS (Xcode 12.3)
+    • Xcode at /Applications/Xcode.app/Contents/Developer
+    • Xcode 12.3, Build version 12C33
+    • CocoaPods version 1.9.1
+
+[✓] Chrome - develop for the web
+    • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+
+[✓] Android Studio (version 4.0)
+    • Android Studio at /Applications/Android Studio.app/Contents
+    • Flutter plugin version 51.0.1
+    • Dart plugin version 193.7547
+    • Java version OpenJDK Runtime Environment (build 1.8.0_242-release-1644-b3-6222593)
+
+[✓] VS Code (version 1.52.1)
+    • VS Code at /Applications/Visual Studio Code.app/Contents
+    • Flutter extension version 3.18.0
+
+[✓] Connected device (2 available)
+    • Web Server (web) • web-server • web-javascript • Flutter Tools
+    • Chrome (web)     • chrome     • web-javascript • Google Chrome 87.0.4280.88
+    ! Error: Girish is not connected. Xcode will continue when Girish is connected. (code -13)
+
+! Doctor found issues in 1 category.
+```
