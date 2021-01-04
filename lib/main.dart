@@ -3,40 +3,88 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // It is the root widget of your application.
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
+
     return MaterialApp(
-      title: 'Multiple Layout Widget',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // This is the theme of your application.
-        primarySwatch: Colors.green,
-      ),
-      home: MyHomePage(),
+      title: "Flutter Demo App",
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: MyHomePage(title: "Complex UI"),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("FittedBox Widget")),
-      body: Center(
-          child: FittedBox(
-        child: Column(
+        appBar: AppBar(title: Text("Product List")),
+        body: ListView(
+          padding: const EdgeInsets.fromLTRB(3.0, 12.0, 3.0, 12.0),
           children: <Widget>[
-            Container(
-              child: Image.asset('assets/test.png'),
-            ),
-            Container(
-              child: Text("This is a widget"),
-            )
+            ProductBox(
+                name: "iPhone",
+                description: "iPhone is the top branded phone ever",
+                price: 55000,
+                image: "iphone.png"),
+            ProductBox(
+                name: "Android",
+                description: "Android is a very stylish phone",
+                price: 10000,
+                image: "android.png"),
+            ProductBox(
+                name: "Tablet",
+                description: "Tablet is a popular device for official meetings",
+                price: 25000,
+                image: "tablet.png"),
+            ProductBox(
+                name: "Laptop",
+                description: "Laptop is most famous electronic device",
+                price: 35000,
+                image: "laptop.png"),
+            ProductBox(
+                name: "Desktop",
+                description: "Desktop is most popular for regular use",
+                price: 10000,
+                image: "computer.png"),
           ],
-        ),
-        fit: BoxFit.contain,
-      )),
-    );
+        ));
+  }
+}
+
+class ProductBox extends StatelessWidget {
+  ProductBox({Key key, this.name, this.description, this.price, this.image})
+      : super(key: key);
+  final String name;
+  final String description;
+  final int price;
+  final String image;
+
+  Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.all(2),
+        height: 110,
+        child: Card(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+              Image.asset("assets/" + image),
+              Expanded(
+                  child: Container(
+                      padding: EdgeInsets.all(5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text(this.name,
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text(this.description),
+                          Text("Price: " + this.price.toString()),
+                        ],
+                      )))
+            ])));
   }
 }
